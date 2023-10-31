@@ -6,7 +6,7 @@ ENV_FILE_PARAM = --env-file .env
 endif
 
 act:
-	source venv/Scripts/activate
+	source env/Scripts/activate
 
 mmig: # run with "make mmig" or "make mmig app='app'"
 	if [ -z "$(app)" ]; then \
@@ -26,7 +26,7 @@ run:
 	python manage.py runserver
 
 cpass:
-	python manage.py changepassword
+	python manage.py changepassword "$(email)"
 
 shell:
 	python manage.py shell
