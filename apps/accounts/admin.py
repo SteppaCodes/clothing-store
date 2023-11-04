@@ -13,7 +13,7 @@ class UserAdmin(admin.ModelAdmin):
             {'fields': ('email', 'password')}
         ),
         (
-            _('Personal Infromation'),
+            _('Personal Information'),
             {'fields':('first_name', "last_name", 'avatar')}
         ),
         (
