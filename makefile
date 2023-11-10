@@ -41,7 +41,7 @@ suser:
 	python manage.py createsuperuser
 
 ureqm:
-	pip freeeze > requirements.txt
+	pip freeze > requirements.txt
 
 
 # DOCKER COMMANDS

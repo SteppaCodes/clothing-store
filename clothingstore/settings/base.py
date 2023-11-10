@@ -148,9 +148,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "static/media/")
 
 
 CLOUDINARY_STORAGE = {
-    "CLOUD_NAME": config("CLOUDINARY_CLOUD_NAME"),
-    "API_KEY": config("CLOUDINARY_API_KEY"),
-    "API_SECRET": config("CLOUDINARY_API_SECRET"),
+    "cloud_name": config("CLOUDINARY_CLOUD_NAME"),
+    "api_key": config("CLOUDINARY_API_KEY"),
+    "api_secret": config("CLOUDINARY_API_SECRET"),
 }
 
 # Default primary key field type
@@ -172,7 +172,7 @@ JAZZMIN_SETTINGS = {
     # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
     "site_header": "CS ADMIN",
     # Logo to use for your site, must be present in static files, used for brand on top left
-    "site_logo": "media/logo.jpgg",
+    "site_logo": "media/logo.jpg",
     # CSS classes that are applied to the logo above
     "site_logo_classes": "media/logo.jpeg",
     # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
