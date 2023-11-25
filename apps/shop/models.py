@@ -5,6 +5,8 @@ from autoslug import AutoSlugField
 from apps.accounts.models import User
 from apps.common.models import BaseModel
 
+from statistics import mean
+
 class Category(BaseModel):
     name = models.CharField(max_length=100)
     slug = AutoSlugField(populate_from='name', unique=True, always_update=True )
@@ -26,6 +28,20 @@ class Product(BaseModel):
 
     def  __str__(self):
         return self.name
+
+    @property
+    def image_url(self):
+        try:
+            url = self.img.url
+        except:
+            url = ""
+        return url
+    
+    @property
+    def avg_rating(self):
+        reviews = self.reviews.values_list("rating", flat=True)
+        avg_rating = round(mean(list(reviews)))
+        return avg_rating
     
 
 RATING_CHOICES =(

@@ -167,22 +167,22 @@ INTERNAL_IPS = [
 
 
 JAZZMIN_SETTINGS = {
-    # title of the window (Will default to current_admin_site.site_title if absent or None)
-    "site_title": 'CLOTHING STORE ADMIN',
+   # title of the window (Will default to current_admin_site.site_title if absent or None)
+    "site_title": "CLOTHING STORE ADMIN",
     # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
     "site_header": "CS ADMIN",
     # Logo to use for your site, must be present in static files, used for brand on top left
     "site_logo": "media/logo.jpg",
     # CSS classes that are applied to the logo above
-    "site_logo_classes": "media/logo.jpeg",
+    "site_logo_classes": "img-circle",
     # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
     "login_logo": "media/logo.jpg",
     # Relative path to a favicon for your site, will default to site_logo if absent (ideally 32x32 px)
-    "site_icon": "media/logo.jpeg",
+    "site_icon": "media/logo.jpg",
     # Welcome text on the login screen
-    "welcome_sign": "WELCOME TO CLOTHING STORE ADMIN SECTION",
+    "welcome_sign": "Welcome to Clothing Store Admin Section",
     # Copyright on the footer
-    "copyright": "clothing store ltd",
+    "copyright": "Clothing Store Ltd",
     # The model admin to search from the search bar, search bar omitted if excluded
     "search_model": "accounts.User",
     # Field name on user model that contains avatar ImageField/URLField/Charfield or a callable that receives the user
@@ -232,6 +232,10 @@ JAZZMIN_SETTINGS = {
         "accounts.Group": "fas fa-users",
         "accounts.user": "fas fa-user-cog",
         "sites.site": "fas fa-globe",
+
+        "shop.category": "fas fa-list",
+        "shop.product": "fas fa-tshirt",
+        "shop.review": "fas fa-comments",
     },
     # Icons that are used when one is not manually specified
     "default_icon_parents": "fas fa-chevron-circle-right",

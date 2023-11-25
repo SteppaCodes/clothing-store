@@ -1,12 +1,14 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
 
 from . models import User
 
-class UserAdmin(admin.ModelAdmin):
+class UserAdmin(BaseUserAdmin):
     list_display = ('first_name', 'last_name', 'email', 'is_email_verified', 'created_at')
     # For Search options
     list_filter = list_display
+    ordering = ["first_name","last_name", "email" ]
     fieldsets=(
         (
             _('Login Credientials'), 
@@ -26,6 +28,26 @@ class UserAdmin(admin.ModelAdmin):
         )
 
     )#Never repeat any field
+
+    add_fieldsets = (
+       ( 
+           None,
+        {
+            "classes": ('wide',),
+            'fields': (
+                'first_name',
+                "last_name",
+                "email",
+                "password1",
+                "password2",
+                "is_staff",
+                "is_superuser",
+                "is_active"
+            ),
+          },
+        ),
+    )
+
     readonly_fields = ('created_at', 'updated_at')
 
 admin.site.register(User, UserAdmin)
