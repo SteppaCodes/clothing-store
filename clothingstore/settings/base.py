@@ -44,12 +44,17 @@ THIRD_PARTY_APPS = [
     "debug_toolbar",
     "sweetify",
     "whitenoise",
+    "crispy_forms",
+    "crispy_bootstrap5"
 ]
 
 INSTALLED_APPS = LOCAL_APPS + DJANGO_APPS + THIRD_PARTY_APPS
 
 AUTH_USER_MODEL = 'accounts.User'
 SITE_ID = 1 
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
