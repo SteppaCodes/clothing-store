@@ -3,13 +3,16 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.forms import UserCreationForm
 
 from .models import User
+from .validators import validate_name
 
 class RegisterForm(UserCreationForm):
     first_name = forms.CharField(
+        validators=[validate_name],
         max_length=50,
         widget=forms.TextInput(attrs={"placeholder": "Enter your first name"}),
     )
     last_name= forms.CharField(
+        validators=[validate_name],
         max_length=50,
         widget=forms.TextInput(attrs={"placeholder": "Enter Your Last Name"})
     )
