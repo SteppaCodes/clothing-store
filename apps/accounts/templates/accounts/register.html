@@ -3,16 +3,24 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="card custom-card" style="padding: 10em 30em 5em 30em;">
-    <div class="card-header">
-        <h5 class="card-title">REGISTER</h5>
-    </div>
-    <div class="card-body">
-        <form method="POST">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <button type="submit" class="btn btn-primary">Register</button>
-        </form>
+<div class="card custom-card" style="padding: 0em 3em 5em 30em;">
+  
+</div>
+
+
+<div class="container mt-5">
+    <div class="card custom-card mx-auto" style="max-width: 30rem; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <div class="card-header">
+            <h5 class="card-title text-center">REGISTER</h5>
+        </div>
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-primary btn-block" style="background-color: #f24040;">Register</button>
+            </form>
+        </div>
     </div>
 </div>
+
 {% endblock content %}
