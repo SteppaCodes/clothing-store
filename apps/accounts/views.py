@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 
 from django.views import View
 from .forms import RegisterForm, LoginForm
@@ -36,9 +37,11 @@ class LoginView(View):
             user = authenticate(request, username=email, password=password)
 
             if not user:
+                messages.error(request, 'Invalid Credentials')
                 return redirect('login')
             else:
                 login(request, user)
+                messages.success(request, 'Login Successful')
                 return redirect('home')
             
         context ={'form':form}

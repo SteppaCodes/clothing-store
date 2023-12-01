@@ -1,10 +1,4 @@
-/*
 
-TemplateMo 546 Sixteen Clothing
-
-https://templatemo.com/tm-546-sixteen-clothing
-
-*/
 body {
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
@@ -206,7 +200,7 @@ a.filled-button:hover {
 /* Header Style */
 header {
 	position: absolute;
-	z-index: 99999;
+	z-index: 999;
 	width: 100%;
 	height: 80px;
 	background-color: #232323;
@@ -1058,3 +1052,41 @@ footer .inner-content p a {
 		bottom: 0;
 	}
 }
+
+
+/* Sweetify toasts design */
+.swal2-container {
+	z-index: 999999 !important;
+}
+.colored-toast.swal2-icon-success {
+    background-color: #228b22 !important;
+  }
+  
+  .colored-toast.swal2-icon-error {
+    background-color: red !important;
+  }
+  
+  .colored-toast.swal2-icon-warning {
+    background-color: #f8bb86 !important;
+  }
+  
+  .colored-toast.swal2-icon-info {
+    background-color: #3fc3ee !important;
+  }
+  
+  .colored-toast.swal2-icon-question {
+    background-color: #87adbd !important;
+  }
+  
+  .colored-toast .swal2-title {
+    color: white;
+  }
+  
+  .colored-toast .swal2-close {
+    color: white;
+  }
+  
+  .colored-toast .swal2-html-container {
+    color: white;
+  }
+

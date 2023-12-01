@@ -19,9 +19,27 @@
     <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
+
+    <!-- sweet alert -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <script src="{% static 'assets/js/toast.js' %}"></script>
+
   </head>
 
   <body>
+
+    {% if messages %}
+    {% for message in messages %}
+      <script>
+        Toast.fire({
+          icon: '{{ message.level_tag }}',
+          title: '{{ message }}'
+        })
+      </script>
+    {% endfor %}
+  {% endif %}
+
 
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -72,10 +90,31 @@
           </div>
         </div>
       </nav>
+
     </header>
+    {% if messages %}
+    {% for message in messages %}
+      <script>
+        Toast.fire({
+          icon: '{{ message.level_tag }}',
+          title: '{{ message }}'
+        })
+      </script>
+    {% endfor %}
+  {% endif %}
 
     {% block content %}
-
+    {% if messages %}
+    {% for message in messages %}
+      <script>
+        Toast.fire({
+          icon: '{{ message.level_tag }}',
+          title: '{{ message }}'
+        })
+      </script>
+    {% endfor %}
+  {% endif %}
+    
     {% endblock content %}
 
     
