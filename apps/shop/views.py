@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import View
+from django.views.generic import ListView
 
 from.models import Product, Category
 
@@ -15,11 +16,10 @@ class HomeView(View):
         return render(request, 'shop/home.html', context)
     
 
-class ProductView(View):
-    def get(self,request):
-        products = Product.objects.all()
-        context = {
-                "products": products,
-            }
-        return render(request, 'shop/products.html', context)
+class ProductView(ListView):
+    model = Product
+    paginate_by = 15
+    context_object_name = "products"
+    template_name = 'shop/products.html'
+    
     

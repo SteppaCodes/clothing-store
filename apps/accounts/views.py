@@ -7,14 +7,18 @@ from .forms import RegisterForm, LoginForm
 
 
 class RegisterView(View):
+
+    def get_form(self, data=None):
+        return RegisterForm(data=data)
+
     def get(self, request):
-        form = RegisterForm()
+        form = self.get_form()
         context = {"form":form}
 
         return render(request, 'accounts/register.html', context)
     
     def post(self ,request):
-        form = RegisterForm(request.POST)
+        form = self.get_form(data=request.POST)
         if form.is_valid():
             form.save()
             return redirect("login")
