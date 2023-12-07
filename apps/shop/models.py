@@ -39,18 +39,14 @@ class Product(BaseModel):
     
     @property
     def avg_rating(self):
-        reviews = self.reviews.values_list("rating", flat=True)
-        avg_rating = round(mean(list(reviews)))
-        return avg_rating
+        reviews = [review.rating for review in self.reviews.all()]
+        avg = 0
+        if len(reviews) > 0:
+            avg = round(mean(list(reviews)))
+        return avg
     
 
-RATING_CHOICES =(
-    (5, 5),
-    (4, 4),
-    (3, 3),
-    (2, 2),
-    (1, 1),
-)
+RATING_CHOICES =((5, 5),(4, 4),(3, 3),(2, 2),(1, 1))
 
 class Review(BaseModel):
     user= models.ForeignKey(User, on_delete=models.CASCADE)

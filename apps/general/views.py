@@ -1,12 +1,16 @@
 from django.shortcuts import render
 from django.views import View
-from .models import TeamMember
+from .models import TeamMember, SiteDetail
 
 class AboutPageView(View):
     def get(self, request):
+        sitedetail, created = SiteDetail.objects.get_or_create()
         members= TeamMember.objects.all()
 
-        context = {"members":members}
+        context = {
+            "sitedetail":sitedetail, 
+            "members":members
+                   }
         return render(request, 'general/about.html', context)
 
 class ContactPageVIew(View):

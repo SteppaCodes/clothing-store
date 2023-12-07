@@ -48,17 +48,17 @@
                   <p>{{ product.desc|truncatechars:100 }}</p>
                   <ul class="stars">
                     {% for i in rating_range %}
-                    <li>
-                        <i 
-                            class="fa fa-star" 
-                            {% if forloop.counter > product.avg_rating %}
-                            style="color:#121212;"
-                            {% endif %}
-                            >
-                        </i>
-                    </li>
-                {% endfor %}
-            </ul>
+                        <li>
+                            <i 
+                                class="fa fa-star" 
+                                {% if forloop.counter > product.avg_rating %}
+                                style="color:#121212;"
+                                {% endif %}
+                                >
+                            </i>
+                        </li>
+                    {% endfor %}
+                </ul>
                   </ul>
                   <span>Reviews ({{product.reviews.count}})</span>
                 </div>

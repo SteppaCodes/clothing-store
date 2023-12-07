@@ -11,7 +11,6 @@ class HomeView(View):
         context = {
             'products':products,
             "categories": categories,
-            "rating_range": range(5)
         }
         return render(request, 'shop/home.html', context)
     
@@ -21,5 +20,6 @@ class ProductView(ListView):
     paginate_by = 15
     context_object_name = "products"
     template_name = 'shop/products.html'
+    queryset = Product.objects.prefetch_related('reviews')
     
     
