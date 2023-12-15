@@ -10,6 +10,7 @@ class SiteDetail(BaseModel):
     phone = models.CharField(max_length=20, null =True)
     address = models.CharField(max_length=500, null=True)
     work_hours = models.CharField(max_length=200, null=True)
+    maps_url = models.URLField(default="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed")
 
     fb = models.URLField(verbose_name=_("Facebook"), default="https://www.facebook.com")
     ig = models.URLField(

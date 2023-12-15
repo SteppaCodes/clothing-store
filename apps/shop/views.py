@@ -9,7 +9,7 @@ class HomeView(View):
         products = Product.objects.all()[:6]
         categories = Category.objects.all()
         context = {
-            'products':products,
+           'products':products,
             "categories": categories,
         }
         return render(request, 'shop/home.html', context)
