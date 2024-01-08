@@ -1,5 +1,7 @@
 from django.db import models
+from django.forms import ValidationError
 from django.utils.translation import gettext_lazy as _
+
 from apps.common.models import BaseModel
 
 
@@ -20,6 +22,11 @@ class SiteDetail(BaseModel):
     ln = models.URLField(
         verbose_name=_("Linkedin"), default="https://www.linkedin.com/"
     )
+
+    def save(self, *arg, **Kwargs):
+        if self._state.adding and SiteDetail.objects.exists():
+            raise ValidationError(_("Only one sitedetail object can be created"))
+        return super(SiteDetail, self).save(*arg, **Kwargs)
 
     def __str__(self):
         return self.name
