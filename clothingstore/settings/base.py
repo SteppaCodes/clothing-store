@@ -129,6 +129,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+PASSWORD_RESET_TIMEOUT = 900
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -141,6 +143,16 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+# SMTP CONFIGURATION
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = config("EMAIL_HOST")
+EMAIL_PORT = config("EMAIL_PORT")
+EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
+EMAIL_USE_SSL = config("EMAIL_USE_SSL")
+DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
 
 
 # Static files (CSS, JavaScript, Images)
