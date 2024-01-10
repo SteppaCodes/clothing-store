@@ -42,6 +42,7 @@ class LoginView(View):
             email = form.cleaned_data["email"]
             password = form.cleaned_data["password"]
             user = authenticate(request, username=email, password=password)
+            
             if not user:
                 messages.error(request, "Invalid Credentials")
                 return redirect("login")
@@ -64,6 +65,7 @@ class VerifyEmail(View):
         uidb64 = kwargs["uidb64"]
         token = kwargs["token"]
         user_id = kwargs["user_id"]
+
         try:
             user_obj = User.objects.get(id=user_id)
         except User.DoesNotExist:
@@ -76,11 +78,9 @@ class VerifyEmail(View):
         except Exception as e:
             user = None
 
-        request.session[
-            "verification_email"
-        ] = (
-            user_obj.email
-        )  # Restoring email to session (incase request was made from a different client)
+        #Storing the email of the user to avoid error if link is accessed from a different client
+        request.session["verification_email"] = (user_obj.email)  
+
         if user:
             if user.id != user_obj.id:
                 messages.error(request, "You entered an invalid link")
@@ -91,7 +91,7 @@ class VerifyEmail(View):
                 user.save()
                 messages.success(request, "Verification successful!")
                 request.session["verification_email"] = None
-                #SendMail.welcome(request, user)
+                SendMail.welcome(request, user)
                 return redirect(reverse("login"))
 
         return render(

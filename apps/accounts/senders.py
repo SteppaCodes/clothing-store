@@ -32,10 +32,9 @@ class SendMail:
     
     @staticmethod
     def verification(request, user):
-        """Send a email to the user for account verification"""
+        """Send an email to the user for account verification"""
         domain = f"{request.scheme}://{request.get_host()}"
         subject = "Verify your Email"
-        print(user.email)
         context={
             "user_id": user.id,
             "domain":domain,
@@ -49,6 +48,16 @@ class SendMail:
         email_message.content_subtype = 'html'  
         EmailThread(email_message).start()
 
-    def welcome():
-        pass
+    @staticmethod
+    def welcome(request, user):
+        domain = f"{request.scheme}://{request.get_host()}"
+        subject = "Account Verified"
+        context = {
+            "domain": domain,
+            "name": user.full_name,
+        }
+        message = render_to_string("accounts/welcome-message.html", context)
+        email_message = EmailMessage(subject=subject, body=message, to=[user.email])
+        email_message.content_subtype = "html"
+        EmailThread(email_message).start()
 
